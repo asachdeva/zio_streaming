@@ -5,7 +5,7 @@ It does so, through a worked example related to real-life problems I deal with.
 
 # Problem Statement
 
-We are interested in monitoring the temperature in a fleet of Devices.
+We are interested in monitoring the temperature in a range of Devices.
 
 Each device has a  sensor that give rise to a record every 10 seconds, comprising
 
