@@ -9,8 +9,6 @@ import Events._
 import java.time.{Duration => JDuration}
 
 object EventStreams {
-  // final def unfoldM[R, E, A, S](s: S)(f0: S => ZIO[R, E, Option[(A, S)]]): ZStream[R, E, A] =
-
   def generatedStream[Evt, S](initialState: S, generator: EventGenerator[Evt, S], timing: JDuration) =
     ZStream.unfoldM(initialState)(generator.generate)
     .schedule(ZSchedule.spaced(Duration.fromJava(timing)))
