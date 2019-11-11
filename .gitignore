@@ -1,0 +1,22 @@
+dist/*
+target/*
+lib_managed/
+src_managed/
+project/boot/
+project/project/
+project/plugins/project/
+project/target
+.history
+.cache
+.lib/
+
+### IDE ###
+.idea/
+.metals/
+.bloop/
+project/.bloop/
+
+### Scala ###
+*.class
+*.log
+
