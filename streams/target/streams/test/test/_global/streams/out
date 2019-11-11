@@ -1,8 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(com.cataratapacifica.stream.events.SpeedingUpTime, zio.test.sbt.RunnableSpecFingerprint$@6d017f00, false, [SuiteSelector])[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(com.cataratapacifica.stream.kafka.DemoTest, zio.test.sbt.RunnableSpecFingerprint$@6d017f00, false, [SuiteSelector])[0m
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(com.cataratapacifica.stream.events.TestChillGenerator, zio.test.sbt.RunnableSpecFingerprint$@6d017f00, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0mDone[0m
-[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com.cataratapacifica.stream.events.TestChillGenerator[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com.cataratapacifica.stream.kafka.DemoTest[0m
-[0m[[0m[0mdebug[0m] [0m[0m	com.cataratapacifica.stream.events.SpeedingUpTime[0m
