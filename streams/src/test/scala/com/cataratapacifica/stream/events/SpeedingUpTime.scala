@@ -6,10 +6,12 @@ import zio._
 import zio.stream.{Sink, ZStream}
 import zio.test._
 import zio.test.Assertion._
+
+import scala.concurrent.duration.{Duration => ScalaDuration, _}
 import SpeedingUpTimeHelper._
 import zio.clock.Clock
 import zio.duration.Duration
-import zio.test.environment.{Live, TestClock}
+import zio.test.environment.{Live, TestClock, TestEnvironment}
 
 object SpeedingUpTime extends DefaultRunnableSpec(
   suite("timings")(
