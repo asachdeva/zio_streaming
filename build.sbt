@@ -1,6 +1,6 @@
 import Dependencies._
 
-lazy val scalaCompilerOptions = Seq(
+lazy val myScalacOptions = Seq(
   "-deprecation",
   "-encoding",
   "UTF-8",
@@ -12,51 +12,37 @@ lazy val scalaCompilerOptions = Seq(
   "-Yno-adapted-args",
   "-Ywarn-dead-code",
   "-Ywarn-numeric-widen",
+  "-Ypartial-unification",
   "-Xfuture",
   "-Xlint"
 )
 
-lazy val root = (project in file("."))
-  .settings(
-    inThisBuild(
-      List(
-        organization := "io.citrine",
-        scalaVersion := "2.12.10",
-        version := "0.1.0-SNAPSHOT"
-      )
-    ),
-    scalacOptions ++= scalaCompilerOptions,
-    name := "UnitsConversionSerrvice",
-    scalafmtOnCompile := true,
-    libraryDependencies ++= Seq(
-      compilerPlugin(Libraries.betterMonadicFor),
-      Libraries.cats,
-      Libraries.catsMeowMtl,
-      Libraries.catsPar,
-      Libraries.catsEffect,
-      Libraries.circeCore,
-      Libraries.circeGeneric,
-      Libraries.circeGenericExt,
-      Libraries.circeLiteral,
-      Libraries.circeParser,
-      Libraries.doobieCore,
-      Libraries.doobieH2,
-      Libraries.doobieHikari,
-      Libraries.h2,
-      Libraries.flyway,
-      Libraries.fs2,
-      Libraries.http4sDsl,
-      Libraries.http4sServer,
-      Libraries.http4sCirce,
-      Libraries.http4sClient,
-      Libraries.logback,
-      Libraries.pureConfig,
-      Libraries.zioCore,
-      Libraries.zioCats,
-      Libraries.catsEffectLaws % Test,
-      Libraries.doobieTest     % Test,
-      Libraries.scalaCheck     % Test,
-      Libraries.scalaMock      % Test,
-      Libraries.scalaTest      % Test
-    )
+lazy val commonSettings = Seq(
+  parallelExecution in Test := false,
+  scalacOptions ++= myScalacOptions,
+  organization := "com.cataratapacifica",
+  testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
+  addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.8"),
+  exportJars := true,
+  updateOptions := updateOptions.value.withCachedResolution(true),
+  libraryDependencies ++= Seq(
+    Libraries.zioInteropCats,
+    Libraries.zioCore,
+    Libraries.zioTest,
+    Libraries.zioTestSbt
   )
+)
+
+lazy val `streams` = (project in file ("streams"))
+  .settings(commonSettings: _*)
+  .settings(libraryDependencies ++= Seq(
+    Libraries.http4sServer,
+    Libraries.http4sClient,
+    Libraries.http4sDsl,
+    Libraries.catsEffect,
+    Libraries.scalaXml,
+    Libraries.zioKafka,
+    Libraries.zioStreams
+  )
+)
+

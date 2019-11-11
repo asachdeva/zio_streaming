@@ -16,13 +16,14 @@ object Dependencies {
     val pureConfig          = "0.12.1"
     val zio                 = "1.0.0-RC16"
     val zioCats             = "2.0.0.0-RC7"
-
+    val zioInteropShared    = "1.0.0-RC6"
+    val zioKafka            = "0.3.2"
     val betterMonadicFor    = "0.3.0"
-
     val logback             = "1.2.3"
     val scalaCheck          = "1.14.2"
     val scalaMock           = "4.4.0"
     val scalaTest           = "3.0.8"
+    val scalaXml            = "1.2.0"
   }
 
   object Libraries {
@@ -56,10 +57,14 @@ object Dependencies {
     lazy val http4sCirce         = http4s("http4s-circe")
     lazy val http4sClient        = http4s("http4s-blaze-client")
 
-    lazy val pureConfig          = "com.github.pureconfig" %% "pureconfig"                 % Versions.pureConfig
+    lazy val pureConfig          = "com.github.pureconfig"  %% "pureconfig"                 % Versions.pureConfig
+    lazy val scalaXml            = "org.scala-lang.modules" %% "scala-xml"                  % Versions.scalaXml
 
     lazy val zioCore             = zio("zio")
-    lazy val zioCats             = "dev.zio"               %% "zio-interop-cats"           % Versions.zioCats
+    lazy val zioInteropShared    = "dev.zio"               %%"zio-interop-shared"          % Versions.zioInteropShared
+    lazy val zioStreams          = zio("zio-streams")
+    lazy val zioInteropCats      = "dev.zio"               %% "zio-interop-cats"           % Versions.zioCats
+    lazy val zioKafka            = "dev.zio"               %% "zio-kafka"                  % Versions.zioKafka
 
     // Compiler plugins
     lazy val betterMonadicFor    = "com.olegpy"            %% "better-monadic-for"         % Versions.betterMonadicFor
@@ -72,5 +77,8 @@ object Dependencies {
     lazy val scalaCheck          = "org.scalacheck"        %% "scalacheck"                 % Versions.scalaCheck
     lazy val scalaMock           = "org.scalamock"         %% "scalamock"                  % Versions.scalaMock
     lazy val scalaTest           = "org.scalatest"         %% "scalatest"                  % Versions.scalaTest
+    lazy val zioTest             = zio("zio-test")
+    lazy val zioTestSbt          = zio("zio-test-sbt")
+
   }
 }
