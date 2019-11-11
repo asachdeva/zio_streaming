@@ -14,6 +14,6 @@ object Events {
     override def at = receivedAt
   }
 
-  case class ChillEvent(vehicleId: String, temperature: Temperature, at: Instant) extends Event
+  case class ChillEvent(deviceId: String, temperature: Temperature, at: Instant) extends Event
 
 }

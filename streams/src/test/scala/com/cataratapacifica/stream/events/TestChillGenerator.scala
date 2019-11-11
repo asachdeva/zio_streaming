@@ -18,7 +18,7 @@ object TestChillGenerator extends DefaultRunnableSpec (
     testM("random walk"){
       for {
         nw <- Generators.now // utility method gets current time as instant from Clock
-        initialState = ChillEvent("vehicle1", -18.0, nw)
+        initialState = ChillEvent("device1", -18.0, nw)
         _ <- fastTime(JDuration.ofSeconds(60), JDuration.ofMillis(10))
         randomWalker = Generators.centeringRandomWalkGenerator(1, -10, 0.1)
         stream = EventStreams.generatedStream(initialState, randomWalker, JDuration.ofMinutes(1)).take(200)
@@ -32,7 +32,7 @@ object TestChillGenerator extends DefaultRunnableSpec (
   ,
   testM("stream received works"){
     for {
-      initialState <- Support.initialiseVehicle(1)
+      initialState <- Support.initialiseDevice(1)
       _ <- fastTime(JDuration.ofSeconds(10), JDuration.ofMillis(20))
 
       stream1 = EventStreams.generatedStream(initialState, Support.randomWalker, JDuration.ofSeconds(60)).take(20)
@@ -71,7 +71,7 @@ object TestChillGenerator extends DefaultRunnableSpec (
       val delays = ZStream.unfoldM(initialDelay)(delayer.generate)
       for {
         _ <- fastTime(JDuration.ofSeconds(10), JDuration.ofMillis(5))
-        initialChill <- Support.initialiseVehicle(1)
+        initialChill <- Support.initialiseDevice(1)
         randomWalker = Generators.centeringRandomWalkGenerator(1, -10, 0.1)
         chillStream = EventStreams.generatedStream(initialChill, randomWalker, JDuration.ofSeconds(20))
         receivedEvents = delays.zip(chillStream).map { pair =>
@@ -85,7 +85,7 @@ object TestChillGenerator extends DefaultRunnableSpec (
       }
     },
 
-    testM("multiple vehicles"){
+    testM("multiple devices"){
       val initialDelay = Delay(JDuration.ofMillis(0))
       val delayer = Generators.delayGenerator(howOften = JDuration.ofMinutes(10),
         variation = JDuration.ofSeconds(300),
@@ -94,7 +94,7 @@ object TestChillGenerator extends DefaultRunnableSpec (
       )
       val randomWalker = Generators.centeringRandomWalkGenerator(1, -10, 0.1)
 
-      def vehicleStream(i: Int, startAt: Instant) = {
+      def deviceStream(i: Int, startAt: Instant) = {
         val initialChill = ChillEvent(s"v-$i", -18.0, startAt)
         val chillStream = EventStreams.generatedStream(initialChill, randomWalker, JDuration.ofSeconds(20))
         val delays = ZStream.unfoldM(initialDelay)(delayer.generate)
@@ -106,7 +106,7 @@ object TestChillGenerator extends DefaultRunnableSpec (
       for {
         _ <- fastTime(JDuration.ofSeconds(10), JDuration.ofMillis(5))
         nw <- Generators.now
-        streams = 1.to(20).map { v => vehicleStream(v, nw)}
+        streams = 1.to(20).map { v => deviceStream(v, nw)}
         combined = ZStream.mergeAllUnbounded()(streams:_*)
         sink = Sink.collectAll[ReceivedEvent[ChillEvent]]
         runner <- combined.take(2000).run(sink)
@@ -121,7 +121,7 @@ object TestChillGenerator extends DefaultRunnableSpec (
 object Support {
   val randomWalker: EventGenerator[ChillEvent, ChillEvent] = Generators.centeringRandomWalkGenerator(1, -10, 0.1)
 
-  def initialiseVehicle(i: Int) =
+  def initialiseDevice(i: Int) =
     Generators.now.map { nw =>
       ChillEvent(s"v-$i", -18.0, nw) }
 
