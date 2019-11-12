@@ -1,0 +1,21 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/http4s_2.12-0.0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/cataratapacifica[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com/cataratapacifica[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/cataratapacifica/server[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com/cataratapacifica/server[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/cataratapacifica/server/BootService$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com/cataratapacifica/server/BootService$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/cataratapacifica/server/BootService$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com/cataratapacifica/server/BootService$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/cataratapacifica/server/BootService.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com/cataratapacifica/server/BootService.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/cataratapacifica/server/Boot.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com/cataratapacifica/server/Boot.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/cataratapacifica/server/Boot$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/asachdeva/work/zio_streaming/http4s/target/scala-2.12/classes/com/cataratapacifica/server/Boot$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m

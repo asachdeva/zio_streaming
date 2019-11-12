@@ -6,12 +6,13 @@ import zio.clock.Clock
 import zio.duration.Duration
 import zio.stream.ZStream
 import Events._
-import java.time.{Duration => JDuration}
+import java.time.{ Duration => JDuration }
 
 object EventStreams {
   def generatedStream[Evt, S](initialState: S, generator: EventGenerator[Evt, S], timing: JDuration) =
-    ZStream.unfoldM(initialState)(generator.generate)
-    .schedule(ZSchedule.spaced(Duration.fromJava(timing)))
+    ZStream
+      .unfoldM(initialState)(generator.generate)
+      .schedule(ZSchedule.spaced(Duration.fromJava(timing)))
 
   def randomEventDelayStream[Evt <: Event](inStream: ZStream[ZEnv with Clock, Nothing, Evt]) =
     inStream.mapM { ev =>

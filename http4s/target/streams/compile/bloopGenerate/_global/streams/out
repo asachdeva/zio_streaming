@@ -1,0 +1,4 @@
+[debug] [http4s] Classpath dependencies List()
+[debug] [http4s] Dependencies from configurations List()
+[debug] Bloop wrote the configuration of project 'http4s' to '/home/asachdeva/work/zio_streaming/.bloop/http4s.json'
+[success] Generated .bloop/http4s.json
